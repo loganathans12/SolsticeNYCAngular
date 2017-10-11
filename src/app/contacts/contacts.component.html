@@ -1,0 +1,11 @@
+<div class="list-group">
+  <div *ngFor="let contact of contacts" class="list-group-item">
+    <div class="row">
+       <a *ngIf="contact.smallImageURL != null || contact.smallImageURL != ''" href="" onclick="contactDetail(contact)">
+          <img src={{contact.smallImageURL}}>
+       </a> 
+       <h4><span class="glyphicon glyphicon-star">{{contact.name}}</span></h4>
+       <span *ngIf="contact.companyName != null || contact.companyName != ''">{{contact?.companyName}}</span>
+    </div>
+  </div>
+</div>
