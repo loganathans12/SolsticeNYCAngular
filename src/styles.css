@@ -1,2 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css"
+
+        /*@media screen and (max-width: 767px){   
+            #main-img{      
+                content:url("img/mobile_homepage.jpg");
+            } 
+        }
+
+        @media screen and (min-width: 768px) {      
+            #main-img{      
+            content:url("img/tablet_homepage.jpg");
+            } 
+        } 
+        @media (min-width: 992px){      
+            #main-img{        
+                content:url("img/desktop_homepage.jpg");  
+            } 
+        }
+        @media (min-width: 1200px) {    
+            #main-img{         
+                content:url("img/desktop_homepage.jpg");   
+            } 
+        }*/
