@@ -12,12 +12,12 @@ export class ContactsComponent implements OnInit {
   constructor(private contactService: ContactService) { }
 
   ngOnInit() {
-    /*this.contactService.getAll()
+    this.contactService.getAll()
       .subscribe(
       contacts => {
         this.contacts = contacts;
         console.log(this.contacts);
-      });*/
+      });
   }
 
   contactDetail(contact){
