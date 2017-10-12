@@ -50,6 +50,10 @@
         height:75px !important;
         width: 75px !important;
     } 
+
+    .contactItemContainer{
+        width:75%;
+    }
 }
 
 @media screen and (min-width: 768px) {      
@@ -61,6 +65,12 @@
         height:125px !important;
         width: 150px !important;
     } 
+    
+    .contactItemContainer{
+        width:70%;
+    }
+
+    
 } 
 @media (min-width: 992px) {      
       .contactListContainer{
@@ -71,6 +81,10 @@
         height:150px !important;
         width: 175px !important;
     } 
+
+    .contactItemContainer{
+        width:50%;
+    }
 }
 @media (min-width: 1200px) {    
     .contactListContainer{
@@ -80,5 +94,9 @@
     .img-responsive{
         height:175px !important;
         width: 200px !important;
+    }
+
+    .contactItemContainer{
+        width:50%;
     }
 }

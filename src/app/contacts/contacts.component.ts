@@ -1,18 +1,25 @@
 import { ContactService } from './../services/contact.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent implements OnInit, DoCheck {
   contacts: any[];
   selectedContact: any;
-  isContactSelected: boolean = false;
-  isFavorite: boolean = false;
+  isContactSelected: boolean;
+  isFavorite: boolean;
 
-  constructor(private contactService: ContactService) { }
+  show: boolean = true;
+
+  constructor(private ref: ChangeDetectorRef, private contactService: ContactService) { }
+
+  ngDoCheck(){
+    console.log('Do Check Event Fired');
+  }
 
   ngOnInit() {
     this.contactService.getAll()
@@ -21,22 +28,33 @@ export class ContactsComponent implements OnInit {
         this.contacts = contacts;
         console.log(this.contacts);
       });
+
+      this.isContactSelected = false;
+      this.isFavorite = false;
+      this.selectedContact = null;
   }
 
-  selectContact(contact){
+  selectContact(contact) {
     this.isContactSelected = !this.isContactSelected;
     this.selectedContact = contact;
     this.isFavorite = contact.isFavorite;
-    console.log('Contact: ' + contact);
-    //alert('Contact: ' + contact);
+    console.log('Contact: ' + this.selectedContact);
   }
 
-  updateContact(){
+  listContacts() {
     this.isContactSelected = !this.isContactSelected;
-    this.selectedContact = '';
+    this.selectedContact = {};
     this.isFavorite = false;
+    this.ref.detectChanges();
   }
 
+  updateContact() {
+    if (this.contacts.length > 0 && this.selectedContact != null) {
+          this.selectedContact.isFavorite = !this.isFavorite;
 
+            let itemIndex = this.contacts.findIndex( item => item.id == this.selectedContact.id);
+            this.contacts[itemIndex] = this.selectedContact;
+    }
+  }
 
 }
