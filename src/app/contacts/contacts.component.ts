@@ -1,11 +1,12 @@
 import { ContactService } from './../services/contact.service';
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, ChangeDetectionStrategy } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  styleUrls: ['./contacts.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContactsComponent implements OnInit, DoCheck {
   contacts: any[];
@@ -31,12 +32,16 @@ export class ContactsComponent implements OnInit, DoCheck {
       this.isFavorite = false;
       this.selectedContact = null;
       
+      console.log('Test ngOnit');
   }
 
   selectContact(contact) {
     this.isContactSelected = !this.isContactSelected;
     this.selectedContact = contact;
     this.isFavorite = contact.isFavorite;
+
+    //contact.isFavorite = !contact.isFavorite;
+
 
   }
 
@@ -47,6 +52,8 @@ export class ContactsComponent implements OnInit, DoCheck {
     this.ref.detectChanges();
     this.ref.markForCheck();
     this.contacts = this.contacts.slice();
+
+    console.log(this.contacts);
   }
 
   updateContact() {
