@@ -13,8 +13,6 @@ export class ContactsComponent implements OnInit, DoCheck {
   isContactSelected: boolean;
   isFavorite: boolean;
 
-  show: boolean = true;
-
   constructor(private ref: ChangeDetectorRef, private contactService: ContactService) { }
 
   ngDoCheck(){
@@ -32,13 +30,14 @@ export class ContactsComponent implements OnInit, DoCheck {
       this.isContactSelected = false;
       this.isFavorite = false;
       this.selectedContact = null;
+      
   }
 
   selectContact(contact) {
     this.isContactSelected = !this.isContactSelected;
     this.selectedContact = contact;
     this.isFavorite = contact.isFavorite;
-    console.log('Contact: ' + this.selectedContact);
+
   }
 
   listContacts() {
@@ -46,6 +45,8 @@ export class ContactsComponent implements OnInit, DoCheck {
     this.selectedContact = {};
     this.isFavorite = false;
     this.ref.detectChanges();
+    this.ref.markForCheck();
+    this.contacts = this.contacts.slice();
   }
 
   updateContact() {

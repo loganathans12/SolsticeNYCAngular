@@ -20,6 +20,8 @@
 
 .contactItem{
     padding-bottom: 5px !important;
+    padding-top:5px !important;
+    border-bottom:2px solid lightgray;
 }
 
 .contentBold {
@@ -40,6 +42,18 @@
     padding-left:22px;
 }
 
+.contactItemRow{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom:2px solid lightgray;
+}
+
+
+.imgCenter {
+    display: block;
+    margin: auto;
+    width: 25%;
+}
 
 @media screen and (max-width: 767px) {   
     .contactListContainer{
