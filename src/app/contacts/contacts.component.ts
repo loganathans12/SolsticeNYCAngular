@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
   contacts: any[];
+  selectedContact: any;
+  isContactSelected: boolean = false;
+  isFavorite: boolean = false;
 
   constructor(private contactService: ContactService) { }
 
@@ -20,8 +23,18 @@ export class ContactsComponent implements OnInit {
       });
   }
 
-  contactDetail(contact){
-    alert('Contact: ' + contact);
+  selectContact(contact){
+    this.isContactSelected = !this.isContactSelected;
+    this.selectedContact = contact;
+    this.isFavorite = contact.isFavorite;
+    console.log('Contact: ' + contact);
+    //alert('Contact: ' + contact);
+  }
+
+  updateContact(){
+    this.isContactSelected = !this.isContactSelected;
+    this.selectedContact = '';
+    this.isFavorite = false;
   }
 
 
